@@ -1,5 +1,6 @@
-import { App } from "../mod.ts";
-import { Controller, Get } from "../decorators.ts";
+// import { App } from "../src/mod.ts";
+// import { Controller, Get } from "../src/decorators.ts";
+import { App, Controller, Get } from "../dist/mod.js";
 
 @Controller()
 export class MainController {

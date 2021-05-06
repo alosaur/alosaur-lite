@@ -1,4 +1,8 @@
-import { ParamMetadataArgs, RequestMethod } from "./models.ts";
+import {
+  ActionMetadataArgs,
+  ParamMetadataArgs,
+  RequestMethod,
+} from "./models.ts";
 
 export type ObjectKeyAny = { [key: string]: any };
 
@@ -62,36 +66,4 @@ export interface ControllerMetadataArgs {
      * Actions of controller
      */
   actions?: ActionMetadataArgs[];
-}
-
-export interface ActionMetadataArgs {
-  /**
-     * Type of request method, GET, POST, etc
-     */
-  type: RequestMethod;
-
-  /**
-     * Object of declaration
-     */
-  object: Object;
-
-  /**
-     * Object.constructor
-     */
-  target: Object;
-
-  /**
-     * Name of action controller method
-     */
-  method: string;
-
-  /**
-     * Route of action
-     */
-  route?: string | RegExp;
-
-  /**
-     * Parent Controller
-     */
-  controller?: ControllerMetadataArgs;
 }
