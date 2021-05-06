@@ -1,6 +1,5 @@
-// import { App } from "../src/mod.ts";
-// import { Controller, Get } from "../src/decorators.ts";
-import { App, Controller, Get } from "../dist/mod.js";
+import {App, Content, Controller, Get, Param} from "../mod.ts";
+// import { App, Controller, Get } from "../dist/mod.js";
 
 @Controller()
 export class MainController {
@@ -10,8 +9,23 @@ export class MainController {
   }
 
   @Get("/home")
-  lolPage() {
+  homePage() {
     return "home page";
+  }
+
+  @Get("/json")
+  jsonPage() {
+    return {data: "test"};
+  }
+
+  @Get("/not")
+  notPage() {
+    return Content("Not authorized", 401);
+  }
+
+  @Get("/page/:id")
+  paramPage(@Param("id") id: string) {
+    return id;
   }
 }
 

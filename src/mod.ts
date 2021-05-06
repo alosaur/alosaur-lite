@@ -6,6 +6,7 @@ import {
 } from "./metadata.ts";
 import { getAction } from "./utils/get-action.ts";
 import { getActionParams } from "./utils/get-action-params.ts";
+import {Content, ContentResponse} from "./render.ts";
 
 export class App {
   private _routes: RouteMetadata[] = [];
@@ -40,13 +41,18 @@ export class App {
       );
 
       // Get Action result from controller method
-      const result = await action.target[action.action](
+      const result: ContentResponse | Response | BodyInit  = await action.target[action.action](
         ...args,
       );
-      return new Response(result);
+
+      if((result as ContentResponse).__isContentResult__ || result instanceof Response){
+        return result as Response;
+      } else {
+        return Content(result as BodyInit);
+      }
     }
 
-    return new Response("404");
+    return Content("Not found", 404);
   }
 }
 
