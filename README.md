@@ -9,18 +9,15 @@ TODO:
 - [ ] Serve static files
 - [ ] Render pages
 - [ ] Middlewares:
--
   - [ ] CORS
--
   - [ ] Static files
--
   - [ ] Custom middleware
-
-
+  - [ ] WebSocket
+  
 ### Example:
 
 ```ts
-import {App, Controller, Get, Content} from "https://raw.githubusercontent.com/alosaur/alosaur-lite/master/dist/mod.js";
+import {App, Content, Controller, Get, Param, QueryParam} from "https://raw.githubusercontent.com/alosaur/alosaur-lite/master/dist/mod.js";
 
 @Controller()
 export class MainController {
@@ -30,7 +27,7 @@ export class MainController {
   }
 
   @Get("/home")
-  lolPage() {
+  homePage() {
     return "home page";
   }
 
@@ -42,6 +39,11 @@ export class MainController {
   @Get("/not")
   notPage() {
     return Content("Not authorized", 401);
+  }
+
+  @Get("/page/:id")
+  paramPage(@Param("id") id: string, @QueryParam('filter') filter: string) {
+    return `Id: ${id} Filter: ${filter}`;
   }
 }
 

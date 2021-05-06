@@ -20,14 +20,14 @@ export async function getActionParams(
 
     switch (param.type) {
       case "query":
-        // const queryParams = getQueryParams(context.request.url);
-        //
-        // if (queryParams && param.name) {
-        //   const paramsArgs = queryParams.get(param.name);
-        //   args.push(paramsArgs ? paramsArgs : undefined);
-        // } else {
-        //   args.push(undefined);
-        // }
+        const queryParams = getQueryParams(context.request.url);
+
+        if (queryParams && param.name) {
+          const paramsArgs = queryParams.get(param.name);
+          args.push(paramsArgs ? paramsArgs : undefined);
+        } else {
+          args.push(undefined);
+        }
         break;
 
       case "cookie":

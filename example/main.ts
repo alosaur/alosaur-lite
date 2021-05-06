@@ -1,5 +1,5 @@
-import {App, Content, Controller, Get, Param} from "../mod.ts";
-// import { App, Controller, Get } from "../dist/mod.js";
+import {App, Content, Controller, Get, Param, QueryParam} from "../mod.ts";
+// import { App, Content, Controller, Get, Param, QueryParam } from "../dist/mod.js";
 
 @Controller()
 export class MainController {
@@ -24,8 +24,8 @@ export class MainController {
   }
 
   @Get("/page/:id")
-  paramPage(@Param("id") id: string) {
-    return id;
+  paramPage(@Param("id") id: string, @QueryParam('filter') filter: string) {
+    return `Id: ${id} Filter: ${filter}`;
   }
 }
 
