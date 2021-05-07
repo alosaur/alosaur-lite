@@ -1,12 +1,12 @@
 import { Marked } from "https://jspm.dev/@ts-stack/markdown";
 
-import { App, Controller, Ctx, Get, HttpContext, View } from "../../mod.ts";
+import { App, Controller, Get, View } from "https://raw.githubusercontent.com/alosaur/alosaur/master/alosaur_lite.ts";
 import { getHtmlPage } from "./html-page.ts";
 
 @Controller()
 export class MainController {
   @Get()
-  indexPage(@Ctx() context: HttpContext) {
+  indexPage() {
     return View("index.md", {});
   }
 

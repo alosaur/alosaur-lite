@@ -1,5 +1,4 @@
 import { getViewRenderConfig } from "./mod.ts";
-import { HttpContext } from "./models.ts";
 
 export class ContentResponse extends Response {
   public __isContentResult__ = true;

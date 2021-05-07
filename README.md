@@ -18,7 +18,7 @@ TODO:
 [Full example](https://github.com/alosaur/alosaur-lite/tree/master/examples/basic)
 
 ```ts
-import {App, Content, Controller, Get, Param, QueryParam} from "https://raw.githubusercontent.com/alosaur/alosaur-lite/master/dist/mod.js";
+import {App, Content, Controller, Get, Param, QueryParam} from "https://deno.land/x/alosaur_lite/dist/mod.js";
 
 @Controller()
 export class MainController {
