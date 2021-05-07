@@ -7,7 +7,7 @@ TODO:
 - [x] Controllers
 - [x] Actions methods (GET, POST, etc)
 - [x] Serve static files
-- [x] Render pages (React jsx)
+- [x] Render pages (React jsx, markdown files)
 - [ ] Middlewares:
   - [ ] CORS
   - [ ] WebSocket
@@ -70,7 +70,7 @@ app.useStatic({
 );
 ```
 
-### How render pages
+### How render pages?
 
 [Example](https://github.com/alosaur/alosaur-lite/tree/master/examples/react)
 
@@ -82,3 +82,7 @@ app.useViewRender({
       await getPage(path, model),
 });
 ```
+
+### How render markdown files?
+
+[Example](https://github.com/alosaur/alosaur-lite/tree/master/examples/markdown)

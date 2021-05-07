@@ -1,4 +1,5 @@
-import {App, Content, Controller, Get, Param, QueryParam} from "../../mod.ts";
+import { App, Content, Controller, Get, Param, QueryParam } from "../../mod.ts";
+
 // import { App, Content, Controller, Get, Param, QueryParam } from "../dist/mod.js";
 
 @Controller() // or @Controller('specific-route')
@@ -15,7 +16,7 @@ export class MainController {
 
   @Get("/json")
   jsonPage() {
-    return {data: "test"};
+    return { data: "test" };
   }
 
   @Get("/not")
@@ -24,7 +25,7 @@ export class MainController {
   }
 
   @Get("/page/:id")
-  paramPage(@Param("id") id: string, @QueryParam('filter') filter: string) {
+  paramPage(@Param("id") id: string, @QueryParam("filter") filter: string) {
     return `Id: ${id} Filter: ${filter}`;
   }
 }
@@ -34,14 +35,12 @@ const app = new App({
 });
 
 app.useStatic({
-      root: import.meta.url,
-      index: "index.html",
-      // baseRoute: "/www/",
-    } // or undefined for default route /
+  root: import.meta.url,
+  index: "index.html",
+  // baseRoute: "/www/",
+} // or undefined for default route /
 );
 
-addEventListener("fetch",(event: FetchEvent) => {
+addEventListener("fetch", (event: FetchEvent) => {
   event.respondWith(app.handleRequest(event.request));
 });
-
-

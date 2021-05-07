@@ -1,4 +1,5 @@
 import { getViewRenderConfig } from "./mod.ts";
+import { HttpContext } from "./models.ts";
 
 export class ContentResponse extends Response {
   public __isContentResult__ = true;
@@ -38,6 +39,8 @@ export async function View(
   status: number = 200,
 ): Promise<ContentResponse> {
   const renderConfig = getViewRenderConfig();
+  const result = await renderConfig.getBody(path, model, renderConfig);
 
-  return Content(await renderConfig.getBody(path, model, renderConfig), status);
+  return result &&
+    Content(await renderConfig.getBody(path, model, renderConfig), status);
 }

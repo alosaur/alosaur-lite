@@ -69,13 +69,15 @@ export class App {
           ...args,
         );
 
-      if (
-        (result as ContentResponse).__isContentResult__ ||
-        result instanceof Response
-      ) {
-        return result as Response;
-      } else {
-        return Content(result as BodyInit);
+      if (result) {
+        if (
+          (result as ContentResponse).__isContentResult__ ||
+          result instanceof Response
+        ) {
+          return result as Response;
+        } else {
+          return Content(result as BodyInit);
+        }
       }
     }
 
