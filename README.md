@@ -1,6 +1,6 @@
 # [WIP] Alosaur-lite
 
-Lightweight version of Alosaur (4.6kb, one file) without dependencies. Specially designed to work with deno deploy.
+Lightweight version of Alosaur (2.3kb, gzip, one file) without dependencies. Specially designed to work with deno deploy.
 
 TODO:
 
@@ -16,7 +16,7 @@ TODO:
   
 ### Example:
 
-[Full example]()
+[Full example](https://github.com/alosaur/alosaur-lite/tree/master/examples/basic)
 
 ```ts
 import {App, Content, Controller, Get, Param, QueryParam} from "https://raw.githubusercontent.com/alosaur/alosaur-lite/master/dist/mod.js";
@@ -60,8 +60,6 @@ addEventListener("fetch", (event: FetchEvent) => {
 
 ```
 
-
-
 ### How to serve static files? 
 
 ```ts
@@ -75,7 +73,7 @@ app.useStatic({
 
 ### How render pages
 
-[Example]()
+[Example](https://github.com/alosaur/alosaur-lite/tree/master/examples/react)
 
 ```ts
 app.useViewRender({
