@@ -1,6 +1,6 @@
 # Alosaur-lite
 
-Lightweight version of Alosaur (2.3kb, gzip, one file) without dependencies. Specially designed to work with deno deploy.
+Lightweight version of Alosaur (2.4kb, gzip, one file) without dependencies. Specially designed to work with deno deploy.
 
 [Demo (Markdown render)](https://alosaur-lite-markdown.deno.dev/)
 
