@@ -2,6 +2,8 @@
 
 Lightweight version of Alosaur (2.3kb, gzip, one file) without dependencies. Specially designed to work with deno deploy.
 
+[Demo (Markdown render)](https://alosaur-lite-markdown.deno.dev/)
+
 TODO:
 
 - [x] Controllers
@@ -85,4 +87,5 @@ app.useViewRender({
 
 ### How render markdown files?
 
-[Example](https://github.com/alosaur/alosaur-lite/tree/master/examples/markdown)
+[Example](https://github.com/alosaur/alosaur-lite/tree/master/examples/markdown) |
+[Demo](https://alosaur-lite-markdown.deno.dev/)
