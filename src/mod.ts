@@ -1,4 +1,9 @@
-import { AppSettings, HttpContext, RouteMetadata } from "./models.ts";
+import {
+  AppSettings,
+  HttpContext,
+  RouteMetadata,
+  StaticFilesConfig,
+} from "./models.ts";
 import {
   getMetadataArgsStorage,
   MetadataArgsStorage,
@@ -6,13 +11,15 @@ import {
 } from "./metadata.ts";
 import { getAction } from "./utils/get-action.ts";
 import { getActionParams } from "./utils/get-action-params.ts";
-import {Content, ContentResponse} from "./render.ts";
+import { Content, ContentResponse } from "./render.ts";
+import { sendStaticFiles } from "./send-static-files.ts";
 
 export class App {
-  private _routes: RouteMetadata[] = [];
-
   private readonly metadata: MetadataArgsStorage;
   private classes: ObjectKeyAny[] = [];
+
+  private _routes: RouteMetadata[] = [];
+  private _staticConfig?: StaticFilesConfig;
 
   constructor(private readonly settings: AppSettings) {
     this.metadata = getMetadataArgsStorage();
@@ -26,6 +33,16 @@ export class App {
 
   public async handleRequest(request: Request): Promise<Response> {
     const context = new HttpContext(request);
+
+    if (this._staticConfig) {
+      const response: Response | null = await sendStaticFiles(
+        request,
+        this._staticConfig,
+      );
+      if (response) {
+        return response;
+      }
+    }
 
     const action = getAction(
       this._routes,
@@ -41,11 +58,15 @@ export class App {
       );
 
       // Get Action result from controller method
-      const result: ContentResponse | Response | BodyInit  = await action.target[action.action](
-        ...args,
-      );
+      const result: ContentResponse | Response | BodyInit = await action.target
+        [action.action](
+          ...args,
+        );
 
-      if((result as ContentResponse).__isContentResult__ || result instanceof Response){
+      if (
+        (result as ContentResponse).__isContentResult__ ||
+        result instanceof Response
+      ) {
         return result as Response;
       } else {
         return Content(result as BodyInit);
@@ -53,6 +74,12 @@ export class App {
     }
 
     return Content("Not found", 404);
+  }
+
+  public useStatic(config?: StaticFilesConfig): void {
+    if (config && !this._staticConfig) {
+      this._staticConfig = config;
+    }
   }
 }
 

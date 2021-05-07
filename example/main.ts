@@ -1,7 +1,7 @@
 import {App, Content, Controller, Get, Param, QueryParam} from "../mod.ts";
 // import { App, Content, Controller, Get, Param, QueryParam } from "../dist/mod.js";
 
-@Controller()
+@Controller() // or @Controller('specific-route')
 export class MainController {
   @Get()
   indexPage() {
@@ -33,6 +33,15 @@ const app = new App({
   controllers: [MainController],
 });
 
-addEventListener("fetch", (event: FetchEvent) => {
+app.useStatic({
+      root: import.meta.url,
+      index: "index.html",
+      // baseRoute: "/www/",
+    } // or undefined for default route /
+);
+
+addEventListener("fetch",(event: FetchEvent) => {
   event.respondWith(app.handleRequest(event.request));
 });
+
+

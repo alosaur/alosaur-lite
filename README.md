@@ -6,7 +6,7 @@ TODO:
 
 - [x] Controllers
 - [x] Actions methods (GET, POST, etc)
-- [ ] Serve static files
+- [x] Serve static files
 - [ ] Render pages
 - [ ] Middlewares:
   - [ ] CORS
@@ -56,4 +56,17 @@ addEventListener("fetch", (event: FetchEvent) => {
 });
 
 
+```
+
+
+
+How to serve static files? 
+
+```ts
+app.useStatic({
+      root: import.meta.url,
+      index: "index.html",
+      baseRoute: "/www/",
+    } // or undefined for default route /
+);
 ```

@@ -95,7 +95,6 @@ export function Delete(route?: string | RegExp): Function {
   };
 }
 
-
 /**
  * Injects a context parameter value to the controller action parameter.
  * Must be applied on a controller action parameter.
@@ -110,7 +109,6 @@ export function Ctx(): Function {
     });
   };
 }
-
 
 /**
  * Injects a request's route parameter value to the controller action parameter.
