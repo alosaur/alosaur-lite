@@ -1,6 +1,6 @@
 import { Marked } from "https://jspm.dev/@ts-stack/markdown";
 
-import { App, Controller, Get, View } from "https://raw.githubusercontent.com/alosaur/alosaur/master/alosaur_lite.ts";
+import { App, Controller, Get, View } from "https://deno.land/x/alosaur_lite/dist/mod.js";
 import { getHtmlPage } from "./html-page.ts";
 
 @Controller()
