@@ -10,9 +10,8 @@ TODO:
 - [x] Render pages (React jsx)
 - [ ] Middlewares:
   - [ ] CORS
-  - [ ] Static files
-  - [ ] Custom middleware
   - [ ] WebSocket
+  - [ ] Custom middleware
   
 ### Example:
 
