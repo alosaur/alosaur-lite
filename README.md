@@ -7,7 +7,7 @@ TODO:
 - [x] Controllers
 - [x] Actions methods (GET, POST, etc)
 - [x] Serve static files
-- [ ] Render pages
+- [x] Render pages (React jsx)
 - [ ] Middlewares:
   - [ ] CORS
   - [ ] Static files
@@ -15,6 +15,8 @@ TODO:
   - [ ] WebSocket
   
 ### Example:
+
+[Full example]()
 
 ```ts
 import {App, Content, Controller, Get, Param, QueryParam} from "https://raw.githubusercontent.com/alosaur/alosaur-lite/master/dist/mod.js";
@@ -60,7 +62,7 @@ addEventListener("fetch", (event: FetchEvent) => {
 
 
 
-How to serve static files? 
+### How to serve static files? 
 
 ```ts
 app.useStatic({
@@ -69,4 +71,17 @@ app.useStatic({
       baseRoute: "/www/",
     } // or undefined for default route /
 );
+```
+
+### How render pages
+
+[Example]()
+
+```ts
+app.useViewRender({
+  type: "react",
+  basePath: `/views/`,
+  getBody: async (path: string, model: Object, config: any) =>
+      await getPage(path, model),
+});
 ```

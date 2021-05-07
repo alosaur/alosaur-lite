@@ -3,6 +3,7 @@ import {
   HttpContext,
   RouteMetadata,
   StaticFilesConfig,
+  ViewRenderConfig,
 } from "./models.ts";
 import {
   getMetadataArgsStorage,
@@ -14,10 +15,15 @@ import { getActionParams } from "./utils/get-action-params.ts";
 import { Content, ContentResponse } from "./render.ts";
 import { sendStaticFiles } from "./send-static-files.ts";
 
+export function getViewRenderConfig(): ViewRenderConfig {
+  return (window as any).viewRenderConfig;
+}
+
 export class App {
   private readonly metadata: MetadataArgsStorage;
   private classes: ObjectKeyAny[] = [];
 
+  private viewRenderConfig: ViewRenderConfig | undefined = undefined;
   private _routes: RouteMetadata[] = [];
   private _staticConfig?: StaticFilesConfig;
 
@@ -79,6 +85,13 @@ export class App {
   public useStatic(config?: StaticFilesConfig): void {
     if (config && !this._staticConfig) {
       this._staticConfig = config;
+    }
+  }
+
+  public useViewRender(config?: ViewRenderConfig): void {
+    if (config && !this.viewRenderConfig) {
+      this.viewRenderConfig = config;
+      (window as any).viewRenderConfig = config;
     }
   }
 }

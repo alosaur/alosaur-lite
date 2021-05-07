@@ -1,7 +1,10 @@
+import { getViewRenderConfig } from "./mod.ts";
+
 export class ContentResponse extends Response {
   public __isContentResult__ = true;
 }
 
+/** Render JSON or other content such as strings, numbers, booleans */
 export function Content(body: BodyInit, status: number = 200): ContentResponse {
   const headers = new Headers();
 
@@ -26,4 +29,15 @@ export function Content(body: BodyInit, status: number = 200): ContentResponse {
   });
 
   return response;
+}
+
+/** Renders view with template with changed template render */
+export async function View(
+  path: string,
+  model: Object,
+  status: number = 200,
+): Promise<ContentResponse> {
+  const renderConfig = getViewRenderConfig();
+
+  return Content(await renderConfig.getBody(path, model, renderConfig), status);
 }

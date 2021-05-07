@@ -1,4 +1,4 @@
-import {App, Content, Controller, Get, Param, QueryParam} from "../mod.ts";
+import {App, Content, Controller, Get, Param, QueryParam} from "../../mod.ts";
 // import { App, Content, Controller, Get, Param, QueryParam } from "../dist/mod.js";
 
 @Controller() // or @Controller('specific-route')
