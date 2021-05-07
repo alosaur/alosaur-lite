@@ -1,4 +1,4 @@
-# This is awesome markdown page with Alosaur Lite with Deno Deploy
+# This is awesome markdown page with Alosaur Lite and Deno Deploy
 
 [Alosaur Lite](https://github.com/alosaur/alosaur-lite)
 
