@@ -10,10 +10,6 @@ TODO:
 - [x] Actions methods (GET, POST, etc)
 - [x] Serve static files
 - [x] Render pages (React jsx, markdown files)
-- [ ] Middlewares:
-  - [ ] CORS
-  - [ ] WebSocket
-  - [ ] Custom middleware
   
 ### Example:
 
